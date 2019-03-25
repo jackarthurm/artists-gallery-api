@@ -22,8 +22,10 @@ class GalleryItemSerializer(HyperlinkedModelSerializer):
         model = GalleryItem
         fields = (
             'id',
+            'original_image',
             'original_width',
             'original_height',
+            'reduced_image',
             'reduced_width',
             'reduced_height',
             'title',
