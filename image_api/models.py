@@ -5,6 +5,10 @@ from uuid import (
 )
 from PIL import Image
 from django.core.files import File
+from django.core.files.uploadedfile import (
+    InMemoryUploadedFile,
+    SimpleUploadedFile,
+)
 
 from django.db.models import (
     Model,
@@ -17,7 +21,7 @@ from django.db.models import (
 
 
 REDUCED_IMAGE_WIDTH: int = 500
-REDUCED_IMAGE_COMPRESSION_QUALITY = 75
+REDUCED_IMAGE_COMPRESSION_QUALITY = 85
 
 
 def upload_to_original_size_folder(instance: 'GalleryItem', _filename: str):
@@ -67,15 +71,18 @@ class GalleryItem(Model):
     )
 
     title: str = TextField()
-    description: str = TextField(null=True)
-    media_description: str = TextField(null=True)
+    description: str = TextField(blank=True)
+    media_description: str = TextField(blank=True)
     artist_name: str = TextField()
 
-    tags = ManyToManyField(to=ItemTag)
+    tags = ManyToManyField(to=ItemTag, blank=True)
 
     def save(self, *args, **kwargs):
 
         self.reduced_image = self._create_reduced_image()
+        self.reduced_image.file.content_type = (
+            self.original_image.file.content_type
+        )
 
         super(GalleryItem, self).save(*args, **kwargs)
 
@@ -98,7 +105,8 @@ class GalleryItem(Model):
         )
 
         reduced_image = reduced_image.resize(
-            (reduced_width, reduced_height)
+            (reduced_width, reduced_height),
+            Image.BICUBIC
         )
 
         output: BytesIO = BytesIO()

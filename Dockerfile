@@ -29,8 +29,6 @@ RUN apk --purge del .build-deps
 
 ADD . /app
 
-RUN ["python", "manage.py", "migrate"]
-
 EXPOSE 8000
 
 ENTRYPOINT ["/usr/local/bin/gunicorn", "--config", "/app/gunicorn.conf", "-b", ":8000", "gallery_api.wsgi:application"]
