@@ -28,6 +28,6 @@ api_router.register(r'image-tags', ItemTagViewSet)
 api_router.register(r'gallery-items', GalleryViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', admin.site.urls),
     path('api/', include(api_router.urls))
 ]
