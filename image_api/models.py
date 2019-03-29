@@ -1,15 +1,11 @@
 from io import BytesIO
+from typing import Tuple
 from uuid import (
     UUID,
     uuid4,
 )
 from PIL import Image
 from django.core.files import File
-from django.core.files.uploadedfile import (
-    InMemoryUploadedFile,
-    SimpleUploadedFile,
-)
-
 from django.db.models import (
     Model,
     ImageField,
@@ -20,7 +16,7 @@ from django.db.models import (
 )
 
 
-REDUCED_IMAGE_WIDTH: int = 500
+REDUCED_IMAGE_SIZE_PX: int = 300  # Target size of the largest image dimension
 REDUCED_IMAGE_COMPRESSION_QUALITY = 85
 
 
@@ -77,7 +73,7 @@ class GalleryItem(Model):
 
     tags = ManyToManyField(to=ItemTag, blank=True)
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs) -> None:
 
         self.reduced_image = self._create_reduced_image()
         self.reduced_image.file.content_type = (
@@ -88,25 +84,18 @@ class GalleryItem(Model):
 
     def _create_reduced_image(
         self,
-        reduced_width: int = REDUCED_IMAGE_WIDTH,
+        reduced_size: int = REDUCED_IMAGE_SIZE_PX,
         compression_quality: int = REDUCED_IMAGE_COMPRESSION_QUALITY
     ) -> File:
 
-        # Resize the original sized image
+        # Resize a copy of the original image
         image: Image = Image.open(self.original_image.file)
         reduced_image: Image = image.copy()
         image.close()
 
-        # Compute the resized image dimensions
-        fractional_width: float = reduced_width / reduced_image.size[0]
-
-        reduced_height: int = round(
-            reduced_image.size[1] * fractional_width
-        )
-
-        reduced_image = reduced_image.resize(
-            (reduced_width, reduced_height),
-            Image.BICUBIC
+        reduced_image = shrink_image_to_largest_dimension(
+            reduced_image,
+            reduced_size
         )
 
         output: BytesIO = BytesIO()
@@ -121,5 +110,41 @@ class GalleryItem(Model):
             self.original_image.name
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
+
+
+def shrink_image_to_largest_dimension(
+    image: Image,
+    target_size: int
+) -> Image:
+    """Preserving aspect ratio"""
+
+    largest_dimension: int = max(image.height, image.width)
+
+    if target_size >= largest_dimension:
+        return image  # The image is small enough already
+
+    scale_factor: float = target_size / largest_dimension
+
+    # Compute the resized image dimensions
+    if largest_dimension == image.height:
+
+        # Set the height to the target size, compute the new width
+        target_dimensions: Tuple[int, int] = (
+            round(image.width * scale_factor),
+            target_size
+        )
+
+    else:
+
+        # Set the width to the target size, compute the new height
+        target_dimensions: Tuple[int, int] = (
+            target_size,
+            round(image.height * scale_factor)
+        )
+
+    return image.resize(
+        target_dimensions,
+        Image.BICUBIC
+    )
