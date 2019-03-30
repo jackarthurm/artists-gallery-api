@@ -1,13 +1,12 @@
 from io import BytesIO
-from typing import Tuple, Generator, Iterable
+from typing import Tuple
 from uuid import (
     UUID,
     uuid4,
 )
 from xmlrpc.client import DateTime
 
-from PIL import Image
-from django.core.files import File
+
 from django.db.models import (
     Model,
     ImageField,
@@ -18,8 +17,11 @@ from django.db.models import (
     DateField,
     OneToOneField,
     CASCADE,
+    Manager,
 )
 from django.db.models.fields.files import ImageFieldFile
+
+from image_api.utils.image_resizer import ImageResizer
 
 IMAGE_FOLDER_NAME: str = 'gallery_images'
 REDUCED_IMAGE_COMPRESSION_QUALITY = 85
@@ -38,6 +40,8 @@ def upload_to_uuid(instance: 'ImageFile', _filename: str):
 
 class ImageFile(Model):
 
+    objects: Manager = Manager()
+
     id: UUID = UUIDField(
         primary_key=True,
         default=uuid4,
@@ -54,6 +58,11 @@ class ImageFile(Model):
 
 class ItemTag(Model):
 
+    class Meta:
+        verbose_name: str = 'Gallery item tag'
+
+    objects: Manager = Manager()
+
     id: UUID = UUIDField(
         primary_key=True,
         default=uuid4,
@@ -66,6 +75,8 @@ class ItemTag(Model):
 
 
 class GalleryItem(Model):
+
+    objects: Manager = Manager()
 
     id: UUID = UUIDField(
         primary_key=True,
@@ -132,7 +143,8 @@ class GalleryItem(Model):
             for field, new_size in image_fields_to_resize:
 
                 resized_content: BytesIO = resizer.shrink_image_to_box_size(
-                    new_size
+                    new_size,
+                    REDUCED_IMAGE_COMPRESSION_QUALITY
                 )
 
                 # Saving the file field also saves the related model
@@ -141,67 +153,3 @@ class GalleryItem(Model):
     def __str__(self) -> str:
         return self.title
 
-
-class ImageResizer(object):
-
-    def __init__(self, image_file: File):
-
-        self._image: Image = Image.open(image_file)
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, *args):
-        self._image.close()
-
-    def shrink_image_to_box_size(self, new_size: int) -> BytesIO:
-
-        reduced_image = shrink_image_largest_dimension(
-            self._image.copy(),  # We resize a copy of the original image
-            new_size
-        )
-
-        output: BytesIO = BytesIO()
-        reduced_image.save(
-            output,
-            format='JPEG',
-            quality=REDUCED_IMAGE_COMPRESSION_QUALITY
-        )
-
-        return output
-
-
-def shrink_image_largest_dimension(
-    image: Image,
-    target_size: int
-) -> Image:
-    """Preserves aspect ratio"""
-
-    largest_dimension: int = max(image.height, image.width)
-
-    if target_size >= largest_dimension:
-        return image  # The image is small enough already
-
-    scale_factor: float = target_size / largest_dimension
-
-    # Compute the resized image dimensions
-    if largest_dimension == image.height:
-
-        # Set the height to the target size, compute the new width
-        target_dimensions: Tuple[int, int] = (
-            round(image.width * scale_factor),
-            target_size
-        )
-
-    else:
-
-        # Set the width to the target size, compute the new height
-        target_dimensions: Tuple[int, int] = (
-            target_size,
-            round(image.height * scale_factor)
-        )
-
-    return image.resize(
-        target_dimensions,
-        Image.BICUBIC
-    )

@@ -53,7 +53,7 @@ CORS_EXPOSE_HEADERS = (
 
 # Application definition
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'gallery_api.apps.GalleryAPIAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -61,7 +61,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'image_api'
+    'image_api',
+    'email_api',
 ]
 
 MIDDLEWARE = [
@@ -158,3 +159,10 @@ AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
 AWS_S3_USE_SSL = (
     os.environ['AWS_S3_USE_SSL'].upper() == 'TRUE'
 )
+
+
+# Admin site
+DJANGO_ADMIN_SITE_HEADER = 'katealicemann.com admin'
+DJANGO_ADMIN_SITE_TITLE = 'katealicemann.com admin portal'
+DJANGO_ADMIN_SITE_INDEX_TITLE = 'katealicemann.com admin portal'
+DJANGO_ADMIN_SITE_LINK_URL = os.environ['FRONTEND_URL']
