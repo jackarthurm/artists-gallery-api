@@ -3,6 +3,7 @@ from rest_framework.serializers import HyperlinkedModelSerializer
 from image_api.models import (
     GalleryItem,
     ItemTag,
+    ImageFile,
 )
 
 
@@ -16,6 +17,17 @@ class ItemTagSerializer(HyperlinkedModelSerializer):
         )
 
 
+class ImageFileSerializer(HyperlinkedModelSerializer):
+
+    class Meta:
+        model = ImageFile
+        fields = (
+            'file',
+            'height',
+            'width',
+        )
+
+
 class GalleryItemSerializer(HyperlinkedModelSerializer):
 
     class Meta:
@@ -23,14 +35,16 @@ class GalleryItemSerializer(HyperlinkedModelSerializer):
         fields = (
             'id',
             'original_image',
-            'original_width',
-            'original_height',
-            'reduced_image',
-            'reduced_width',
-            'reduced_height',
+            'large_image',
+            'thumbnail_image',
             'title',
+            'created_date',
             'description',
             'media_description',
             'artist_name',
             'tags',
         )
+
+    original_image = ImageFileSerializer()
+    large_image = ImageFileSerializer()
+    thumbnail_image = ImageFileSerializer()
