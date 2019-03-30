@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class ImageAPIConfig(AppConfig):
     name = 'image_api'
-    verbose_name = "Rock ’n’ roll"
+    verbose_name = "Gallery"

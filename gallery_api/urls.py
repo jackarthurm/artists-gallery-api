@@ -18,6 +18,7 @@ from django.urls import path, include
 
 from rest_framework import routers
 
+from email_api.views import CreateContactEnquiryViewSet
 from image_api.views import (
     ItemTagViewSet,
     GalleryViewSet,
@@ -26,6 +27,7 @@ from image_api.views import (
 api_router = routers.DefaultRouter()
 api_router.register(r'image-tags', ItemTagViewSet)
 api_router.register(r'gallery-items', GalleryViewSet)
+api_router.register(r'contact', CreateContactEnquiryViewSet)
 
 urlpatterns = [
     path('', admin.site.urls),

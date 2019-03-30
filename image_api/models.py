@@ -6,7 +6,7 @@ from uuid import (
 )
 from xmlrpc.client import DateTime
 
-
+from django.db import transaction
 from django.db.models import (
     Model,
     ImageField,
@@ -114,9 +114,11 @@ class GalleryItem(Model):
 
     def save(self, *args, **kwargs) -> None:
 
-        self._create_reduced_size_images()
+        with transaction.atomic():
 
-        super(GalleryItem, self).save(*args, **kwargs)
+            self._create_reduced_size_images()
+
+            super(GalleryItem, self).save(*args, **kwargs)
 
     def _create_reduced_size_images(self) -> None:
 
