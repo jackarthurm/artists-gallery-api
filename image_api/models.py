@@ -119,28 +119,30 @@ class GalleryItem(UUIDModel):
 
             super(GalleryItem, self).save(*args, **kwargs)
 
-    def save_image(self, image_file: File) -> None:
+    def save_image(self, file: File) -> None:
+
+        self._save_image_field('original_image', file)
+
+    def _save_image_field(self, image_field: str, file: File) -> None:
 
         try:
-            img: ImageFile = self.original_image
+            img: ImageFile = getattr(self, image_field)
         except ImageFile.DoesNotExist:
-            img: ImageFile = ImageFile()
+            img: ImageFile = ImageFile(id=uuid4())
 
-        img.file = image_file
-        img.save()
+        # Saving the file field saves the related model too
+        img.file.save(
+            None,
+            file
+        )
 
-        self.original_image = img
+        setattr(self, image_field, img)
 
     def _save_reduced_size_images(self) -> None:
 
         # The original image field is editable and
         # not nullable so we can assume it exists
         with ImageResizer(self.original_image.file.file) as resizer:
-
-            try:
-                self.thumbnail_image
-            except ImageFile.DoesNotExist:
-                self.thumbnail_image = ImageFile(id=uuid4())
 
             file = SimpleUploadedFile(None, None, 'image/jpeg')
 
@@ -151,16 +153,9 @@ class GalleryItem(UUIDModel):
                 save_format='JPEG',
             )
 
-            # Saving the file field saves the related model too
-            self.thumbnail_image.file.save(
-                None,
-                file
-            )
+            self._save_image_field('thumbnail_image', file)
 
-            try:
-                self.large_image
-            except ImageFile.DoesNotExist:
-                self.large_image = ImageFile(id=uuid4())
+            file = SimpleUploadedFile(None, None, 'image/jpeg')
 
             resizer.shrink_image_to_box_size(
                 new_size=ReducedImageSizePx.LARGE,
@@ -169,11 +164,7 @@ class GalleryItem(UUIDModel):
                 save_format='JPEG',
             )
 
-            # Saving the file field saves the related model too
-            self.large_image.file.save(
-                None,
-                file
-            )
+            self._save_image_field('large_image', file)
 
     def __str__(self) -> str:
         return f'Gallery item for "{self.title}"'
