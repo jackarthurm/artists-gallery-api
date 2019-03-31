@@ -1,8 +1,5 @@
 from PIL import Image
-from io import (
-    BytesIO,
-    FileIO,
-)
+from io import FileIO
 from typing import Tuple
 
 
@@ -21,22 +18,21 @@ class ImageResizer(object):
     def shrink_image_to_box_size(
         self,
         new_size: int,
-        compression_quality: int
-    ) -> BytesIO:
+        fout: FileIO,
+        compression_quality: int = 85,
+        save_format: str = 'JPEG'
+    ) -> None:
 
         resized_image: Image = shrink_image_largest_dimension(
             self._image.copy(),  # We resize a copy of the original image
             new_size
         )
 
-        output: BytesIO = BytesIO()
         resized_image.save(
-            output,
-            format='JPEG',
+            fout,
+            format=save_format,
             quality=compression_quality
         )
-
-        return output
 
 
 def shrink_image_largest_dimension(

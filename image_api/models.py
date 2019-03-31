@@ -1,8 +1,10 @@
-from io import BytesIO
-from typing import Tuple
-from uuid import UUID, uuid4
+from uuid import (
+    UUID,
+    uuid4,
+)
 
 from django.core.files import File
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db import transaction
 from django.db.models import (
     Model,
@@ -36,7 +38,7 @@ class ReducedImageSizePx(object):
 def upload_to_uuid(instance: 'ImageFile', _filename: str):
 
     if not isinstance(instance.pk, UUID):
-        raise ValueError('')
+        raise ValueError('Instance ID must be set')
 
     return f'{IMAGE_FOLDER_NAME}/{instance.pk}'
 
@@ -78,19 +80,6 @@ class GalleryItem(UUIDModel):
             '-created_date',
             'title',
         )
-
-    # Define the ImageFile related objects that
-    # need resizing and their target sizes
-    RELATED_IMAGES_TO_RESIZE: Tuple[Tuple[str, int]] = (
-        (
-            'large_image',
-            ReducedImageSizePx.THUMBNAIL
-        ),
-        (
-            'thumbnail_image',
-            ReducedImageSizePx.LARGE
-        ),
-    )
 
     objects: Manager = Manager()
 
@@ -148,23 +137,43 @@ class GalleryItem(UUIDModel):
         # not nullable so we can assume it exists
         with ImageResizer(self.original_image.file.file) as resizer:
 
-            for field_name, new_size in self.RELATED_IMAGES_TO_RESIZE:
+            try:
+                self.thumbnail_image
+            except ImageFile.DoesNotExist:
+                self.thumbnail_image = ImageFile(id=uuid4())
 
-                content: BytesIO = resizer.shrink_image_to_box_size(
-                    new_size,
-                    REDUCED_IMAGE_COMPRESSION_QUALITY
-                )
+            file = SimpleUploadedFile(None, None, 'image/jpeg')
 
-                try:
-                    img: ImageFile = getattr(self, field_name)
-                except ImageFile.DoesNotExist:
-                    img: ImageFile = ImageFile()
-                    img.id = uuid4()
+            resizer.shrink_image_to_box_size(
+                new_size=ReducedImageSizePx.THUMBNAIL,
+                fout=file.file,
+                compression_quality=REDUCED_IMAGE_COMPRESSION_QUALITY,
+                save_format='JPEG',
+            )
 
-                # Saving the file also saves the related ImageFile model
-                img.file.save(None, content)
+            # Saving the file field saves the related model too
+            self.thumbnail_image.file.save(
+                None,
+                file
+            )
 
-                setattr(self, field_name, img)
+            try:
+                self.large_image
+            except ImageFile.DoesNotExist:
+                self.large_image = ImageFile(id=uuid4())
+
+            resizer.shrink_image_to_box_size(
+                new_size=ReducedImageSizePx.LARGE,
+                fout=file.file,
+                compression_quality=REDUCED_IMAGE_COMPRESSION_QUALITY,
+                save_format='JPEG',
+            )
+
+            # Saving the file field saves the related model too
+            self.large_image.file.save(
+                None,
+                file
+            )
 
     def __str__(self) -> str:
         return f'Gallery item for "{self.title}"'
