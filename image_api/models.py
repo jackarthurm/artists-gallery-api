@@ -1,16 +1,11 @@
 from io import BytesIO
 from typing import Tuple
-from uuid import (
-    UUID,
-    uuid4,
-)
-from xmlrpc.client import DateTime
 
+from django.core.files import File
 from django.db import transaction
 from django.db.models import (
     Model,
     ImageField,
-    UUIDField,
     TextField,
     IntegerField,
     ManyToManyField,
@@ -18,10 +13,13 @@ from django.db.models import (
     OneToOneField,
     CASCADE,
     Manager,
+    CharField,
 )
 from django.db.models.fields.files import ImageFieldFile
 
+from gallery_shared.models import UUIDModel
 from image_api.utils.image_resizer import ImageResizer
+
 
 IMAGE_FOLDER_NAME: str = 'gallery_images'
 REDUCED_IMAGE_COMPRESSION_QUALITY = 85
@@ -38,51 +36,39 @@ def upload_to_uuid(instance: 'ImageFile', _filename: str):
     return f'{IMAGE_FOLDER_NAME}/{instance.pk}'
 
 
-class ImageFile(Model):
+class ImageFile(UUIDModel):
 
     objects: Manager = Manager()
 
-    id: UUID = UUIDField(
-        primary_key=True,
-        default=uuid4,
-        editable=False
-    )
     width: int = IntegerField(editable=False)
     height: int = IntegerField(editable=False)
     file: ImageFieldFile = ImageField(
         height_field='height',
         width_field='width',
-        upload_to=upload_to_uuid
+        upload_to=upload_to_uuid,
+        blank=False
     )
 
 
 class ItemTag(Model):
 
     class Meta:
-        verbose_name: str = 'Gallery item tag'
+        verbose_name: str = 'gallery item tag'
 
     objects: Manager = Manager()
 
-    id: UUID = UUIDField(
-        primary_key=True,
-        default=uuid4,
-        editable=False
-    )
-    name: str = TextField()
+    name: str = CharField(primary_key=True, max_length=32)
 
     def __str__(self) -> str:
-        return self.name
+        return f'Gallery item tag "{self.name}"'
 
 
-class GalleryItem(Model):
+class GalleryItem(UUIDModel):
+
+    class Meta:
+        verbose_name = 'gallery item'
 
     objects: Manager = Manager()
-
-    id: UUID = UUIDField(
-        primary_key=True,
-        default=uuid4,
-        editable=False
-    )
 
     original_image: ImageFile = OneToOneField(
         to=ImageFile,
@@ -105,7 +91,7 @@ class GalleryItem(Model):
     )
 
     title: str = TextField()
-    created_date: DateTime = DateField(null=True, blank=True)
+    created_date = DateField(null=True, blank=True)
     description: str = TextField(blank=True)
     media_description: str = TextField(blank=True)
     artist_name: str = TextField()
@@ -120,20 +106,39 @@ class GalleryItem(Model):
 
             super(GalleryItem, self).save(*args, **kwargs)
 
+    def set_image(self, image_file: File) -> None:
+
+        try:
+            img: ImageFile = self.original_image
+        except ImageFile.DoesNotExist:
+            img: ImageFile = ImageFile()
+
+        img.file = image_file
+        img.save()
+
+        self.original_image = img
+
     def _create_reduced_size_images(self) -> None:
 
-        self.thumbnail_image = ImageFile()
-        self.large_image = ImageFile()
+        try:
+            thumbnail_image: ImageFile = self.thumbnail_image
+        except ImageFile.DoesNotExist:
+            thumbnail_image: ImageFile = ImageFile()
+
+        try:
+            large_image: ImageFile = self.large_image
+        except ImageFile.DoesNotExist:
+            large_image: ImageFile = ImageFile()
 
         # Define the image file objects that need
         # resizing and their target sizes
-        image_fields_to_resize: Tuple[Tuple[ImageFile, int]] = (
+        images_to_resize: Tuple[Tuple[ImageFile, int]] = (
             (
-                self.thumbnail_image,
+                thumbnail_image,
                 ReducedImageSize.THUMBNAIL_SIZE_PX
             ),
             (
-                self.large_image,
+                large_image,
                 ReducedImageSize.LARGE_SIZE_PX
             ),
         )
@@ -142,16 +147,19 @@ class GalleryItem(Model):
         # not nullable so we can assume it exists
         with ImageResizer(self.original_image.file.file) as resizer:
 
-            for field, new_size in image_fields_to_resize:
+            for img, new_size in images_to_resize:
 
                 resized_content: BytesIO = resizer.shrink_image_to_box_size(
                     new_size,
                     REDUCED_IMAGE_COMPRESSION_QUALITY
                 )
 
-                # Saving the file field also saves the related model
-                field.file.save(None, resized_content)
+                # Saving the file field also creates the model
+                img.file.save(None, resized_content)
+
+        # Now the relations are saved we can set them as model attributes
+        self.thumbnail_image = thumbnail_image
+        self.large_image = large_image
 
     def __str__(self) -> str:
-        return self.title
-
+        return f'Gallery item for "{self.title}"'

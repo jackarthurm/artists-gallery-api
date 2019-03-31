@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69fe7e45-4579-496c-85c0-1d37d31fae84" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/email_api/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gallery_api/throttles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/email_api/templates/new_message_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/email_api/templates/new_message_email.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gallery_shared/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email_api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/email_api/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/email_api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/email_api/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email_api/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/email_api/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email_api/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/email_api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/email_api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email_api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/email_api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gallery_api/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/gallery_api/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gallery_api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gallery_api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image_api/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_api/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_api/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_api/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_api/migrations/0002_auto_20190330_1446.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/image_api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_api/serializers.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/image_api/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+            <state relative-caret-position="233">
+              <caret line="128" column="53" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="53" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -36,34 +37,54 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/email_api/views.py">
+        <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/db/models/fields/files.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="322">
+              <caret line="92" selection-start-line="92" selection-end-line="92" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gallery_api/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
-                <element signature="e#0#50#0" expanded="true" />
+                <element signature="e#312#321#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gallery_api/urls.py">
+        <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/core/management/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="435">
+              <caret line="424" selection-start-line="424" selection-end-line="424" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/email_api/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-733">
+              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
               <folding>
-                <element signature="e#635#667#0" expanded="true" />
+                <element signature="e#0#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/image_api/apps.py">
+        <entry file="file://$PROJECT_DIR$/gallery_api/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state>
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,59 +92,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/image_api/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/image_api/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="8" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/email_api/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="27" selection-start-column="27" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/email_api/apps.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="20" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/email_api/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state relative-caret-position="1367">
+              <caret line="100" column="6" lean-forward="true" selection-start-line="100" selection-start-column="6" selection-end-line="100" selection-end-column="6" />
               <folding>
-                <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#0#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/email_api/serializers.py">
+        <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin/options.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-              <folding>
-                <element signature="e#0#66#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="183">
+              <caret line="1090" selection-start-line="1090" selection-end-line="1090" />
             </state>
           </provider>
         </entry>
@@ -149,10 +131,17 @@
       <find>api_root</find>
       <find>root</find>
       <find>ROCK ’N’ ROLL</find>
+      <find>error</find>
+      <find>SMTPException</find>
+      <find>read</find>
+      <find>Change</find>
+      <find>has_change</find>
+      <find>get_pk_value_on_save</find>
+      <find>get_pk</find>
     </findStrings>
     <dirStrings>
-      <dir>$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin</dir>
       <dir>$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/rest_framework/templates/rest_framework</dir>
+      <dir>$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -168,26 +157,29 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Dockerfile" />
         <option value="$PROJECT_DIR$/.ebextensions/db-migrate.config" />
-        <option value="$PROJECT_DIR$/image_api/serializers.py" />
         <option value="$PROJECT_DIR$/templates/admin/userlinks.html" />
         <option value="$PROJECT_DIR$/image_api/utils/image_resizer.py" />
         <option value="$PROJECT_DIR$/image_api/__init__.py" />
         <option value="$PROJECT_DIR$/gallery_api/apps.py" />
         <option value="$PROJECT_DIR$/gallery_api/admin.py" />
-        <option value="$PROJECT_DIR$/image_api/admin.py" />
         <option value="$PROJECT_DIR$/gallery_api/throttle.py" />
         <option value="$PROJECT_DIR$/gallery_api/throttles.py" />
         <option value="$PROJECT_DIR$/email_api/throttles.py" />
-        <option value="$PROJECT_DIR$/gallery_api/settings.py" />
-        <option value="$PROJECT_DIR$/email_api/admin.py" />
         <option value="$PROJECT_DIR$/email_api/serializers.py" />
         <option value="$PROJECT_DIR$/gallery_api/urls.py" />
         <option value="$PROJECT_DIR$/email_api/views.py" />
-        <option value="$PROJECT_DIR$/image_api/models.py" />
         <option value="$PROJECT_DIR$/image_api/apps.py" />
-        <option value="$PROJECT_DIR$/email_api/apps.py" />
-        <option value="$PROJECT_DIR$/email_api/models.py" />
         <option value="$PROJECT_DIR$/email_api/__init__.py" />
+        <option value="$PROJECT_DIR$/email_api/apps.py" />
+        <option value="$PROJECT_DIR$/email_api/templates/new_message_email.html" />
+        <option value="$PROJECT_DIR$/email_api/templates/new_message_email.txt" />
+        <option value="$PROJECT_DIR$/email_api/admin.py" />
+        <option value="$PROJECT_DIR$/image_api/serializers.py" />
+        <option value="$PROJECT_DIR$/gallery_api/settings.py" />
+        <option value="$PROJECT_DIR$/email_api/models.py" />
+        <option value="$PROJECT_DIR$/gallery_shared/models.py" />
+        <option value="$PROJECT_DIR$/image_api/admin.py" />
+        <option value="$PROJECT_DIR$/image_api/models.py" />
       </list>
     </option>
   </component>
@@ -217,7 +209,24 @@
             <path>
               <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
               <item name="gallery_api" type="462c0819:PsiDirectoryNode" />
+              <item name="email_api" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
               <item name="gallery_api" type="462c0819:PsiDirectoryNode" />
+              <item name="email_api" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gallery_api" type="462c0819:PsiDirectoryNode" />
+              <item name="gallery_api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gallery_api" type="462c0819:PsiDirectoryNode" />
+              <item name="gallery_shared" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
@@ -227,6 +236,41 @@
             <path>
               <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.7 (galapi) &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.7 (galapi) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.7 (galapi) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="django" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.7 (galapi) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="django" type="462c0819:PsiDirectoryNode" />
+              <item name="contrib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gallery_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.7 (galapi) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="django" type="462c0819:PsiDirectoryNode" />
+              <item name="contrib" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -238,7 +282,7 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.postfix.templates" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -285,6 +329,13 @@
         <env name="AWS_S3_REGION_NAME" value="eu-west-1" />
         <env name="DEBUG" value="TRUE" />
         <env name="FRONTEND_URL" value="http://localhost:4200/" />
+        <env name="CONTACT_EMAILS" value="jackarthurm@gmail.com" />
+        <env name="DEFAULT_FROM_EMAIL" value="info@katealicemann.com" />
+        <env name="EMAIL_HOST" value="email-smtp.eu-west-1.amazonaws.com" />
+        <env name="EMAIL_PORT" value="25" />
+        <env name="EMAIL_HOST_USER" value="AKIAT66ZKXZGAFSYPC6V" />
+        <env name="EMAIL_HOST_PASSWORD" value="BEOzsekF/os+kFy9z0akqDSzWToHUX7RkybllLCs9N9g" />
+        <env name="EMAIL_USE_TLS" value="TRUE" />
       </envs>
       <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/galapi/bin/python" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -311,7 +362,20 @@
         <env name="SECRET_KEY" value="^9win-t284mk!82-^qaxapz)w()1lgat1j7m#e46_s&amp;5(kpki0" />
         <env name="ALLOWED_HOSTS" value="*" />
         <env name="CORS_ORIGIN_WHITELIST" value="localhost:4200" />
+        <env name="AWS_ACCESS_KEY_ID" value="AKIAI5QGUDJZF7YL234A" />
+        <env name="AWS_SECRET_ACCESS_KEY" value="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" />
+        <env name="AWS_STORAGE_BUCKET_NAME" value="katealicemann-static" />
+        <env name="AWS_S3_USE_SSL" value="nope" />
+        <env name="AWS_S3_REGION_NAME" value="eu-west-1" />
+        <env name="DEBUG" value="TRUE" />
         <env name="FRONTEND_URL" value="http://localhost:4200/" />
+        <env name="CONTACT_EMAILS" value="jackarthurm@gmail.com" />
+        <env name="DEFAULT_FROM_EMAIL" value="info@katealicemann.com" />
+        <env name="EMAIL_HOST" value="email-smtp.eu-west-1.amazonaws.com" />
+        <env name="EMAIL_PORT" value="25" />
+        <env name="EMAIL_HOST_USER" value="AKIAT66ZKXZGAFSYPC6V" />
+        <env name="EMAIL_HOST_PASSWORD" value="BEOzsekF/os+kFy9z0akqDSzWToHUX7RkybllLCs9N9g" />
+        <env name="EMAIL_USE_TLS" value="TRUE" />
       </envs>
       <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/galapi/bin/python" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -345,6 +409,13 @@
         <env name="AWS_S3_REGION_NAME" value="eu-west-1" />
         <env name="DEBUG" value="TRUE" />
         <env name="FRONTEND_URL" value="http://localhost:4200/" />
+        <env name="CONTACT_EMAILS" value="jackarthurm@gmail.com" />
+        <env name="DEFAULT_FROM_EMAIL" value="info@katealicemann.com" />
+        <env name="EMAIL_HOST" value="email-smtp.eu-west-1.amazonaws.com" />
+        <env name="EMAIL_PORT" value="25" />
+        <env name="EMAIL_HOST_USER" value="AKIAT66ZKXZGAFSYPC6V" />
+        <env name="EMAIL_HOST_PASSWORD" value="BEOzsekF/os+kFy9z0akqDSzWToHUX7RkybllLCs9N9g" />
+        <env name="EMAIL_USE_TLS" value="TRUE" />
       </envs>
       <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/galapi/bin/python" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -378,6 +449,13 @@
         <env name="AWS_S3_REGION_NAME" value="eu-west-1" />
         <env name="DEBUG" value="TRUE" />
         <env name="FRONTEND_URL" value="http://localhost:4200/" />
+        <env name="CONTACT_EMAILS" value="jackarthurm@gmail.com" />
+        <env name="DEFAULT_FROM_EMAIL" value="info@katealicemann.com" />
+        <env name="EMAIL_HOST" value="email-smtp.eu-west-1.amazonaws.com" />
+        <env name="EMAIL_PORT" value="25" />
+        <env name="EMAIL_HOST_USER" value="AKIAT66ZKXZGAFSYPC6V" />
+        <env name="EMAIL_HOST_PASSWORD" value="BEOzsekF/os+kFy9z0akqDSzWToHUX7RkybllLCs9N9g" />
+        <env name="EMAIL_USE_TLS" value="TRUE" />
       </envs>
       <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/galapi/bin/python" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -411,6 +489,13 @@
         <env name="AWS_S3_REGION_NAME" value="eu-west-1" />
         <env name="DEBUG" value="TRUE" />
         <env name="FRONTEND_URL" value="http://localhost:4200/" />
+        <env name="CONTACT_EMAILS" value="jackarthurm@gmail.com" />
+        <env name="DEFAULT_FROM_EMAIL" value="info@katealicemann.com" />
+        <env name="EMAIL_HOST" value="email-smtp.eu-west-1.amazonaws.com" />
+        <env name="EMAIL_PORT" value="25" />
+        <env name="EMAIL_HOST_USER" value="AKIAT66ZKXZGAFSYPC6V" />
+        <env name="EMAIL_HOST_PASSWORD" value="BEOzsekF/os+kFy9z0akqDSzWToHUX7RkybllLCs9N9g" />
+        <env name="EMAIL_USE_TLS" value="TRUE" />
       </envs>
       <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/galapi/bin/python" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -444,6 +529,13 @@
         <env name="AWS_S3_REGION_NAME" value="eu-west-1" />
         <env name="DEBUG" value="TRUE" />
         <env name="FRONTEND_URL" value="http://localhost:4200/" />
+        <env name="CONTACT_EMAILS" value="jackarthurm@gmail.com" />
+        <env name="DEFAULT_FROM_EMAIL" value="info@katealicemann.com" />
+        <env name="EMAIL_HOST" value="email-smtp.eu-west-1.amazonaws.com" />
+        <env name="EMAIL_PORT" value="25" />
+        <env name="EMAIL_HOST_USER" value="AKIAT66ZKXZGAFSYPC6V" />
+        <env name="EMAIL_HOST_PASSWORD" value="BEOzsekF/os+kFy9z0akqDSzWToHUX7RkybllLCs9N9g" />
+        <env name="EMAIL_USE_TLS" value="TRUE" />
       </envs>
       <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/galapi/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -467,6 +559,9 @@
       <item itemvalue="Python.migrate" />
     </list>
   </component>
+  <component name="StructureViewFactory">
+    <option name="AUTOSCROLL_FROM_SOURCE" value="true" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -484,20 +579,20 @@
     <frame x="-1" y="0" width="1922" height="1081" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24960506" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24960506" />
       <window_info id="Structure" order="1" weight="0.24960506" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3294979" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49710375" weight="0.32845187" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49815693" visible="true" weight="0.39958158" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49552396" weight="0.32845187" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49552396" visible="true" weight="0.39958158" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49710375" weight="0.32845187" />
-      <window_info anchor="bottom" id="Python Console" order="9" weight="0.3294979" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50289625" side_tool="true" weight="0.32845187" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49605057" weight="0.32845187" />
+      <window_info anchor="bottom" id="Python Console" order="9" sideWeight="0.4997367" weight="0.3294979" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.504476" side_tool="true" visible="true" weight="0.39958158" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -505,6 +600,23 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>super(GalleryItemAdmin, self).save_model(
+            request,
+            instance,
+            form,
+            change
+        )</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>ImageFile.objects.get_or_create(
+            file=image_file
+        )</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>ImageFile(
             file=create_reduced_image(
@@ -550,196 +662,53 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>dir(image_file)</expression-string>
+        <expression-string>self.thumbnail_image</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>isinstance(image_file, FileIO)</expression-string>
+        <expression-string>self._recreate_reduced_size_images()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>image_file</expression-string>
+        <expression-string>self</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>form.cleaned_data['image_file']</expression-string>
+        <expression-string>ImageFile()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.large_image.file.save()</expression-string>
+        <expression-string>self._create_reduced_size_images()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.large_image.save()</expression-string>
+        <expression-string>bool(self.default)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.large_image.file.save(None, large_file)</expression-string>
+        <expression-string>obj.pk</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.original_image.file.content_type</expression-string>
+        <expression-string>obj.save()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.large_image.file.content_type = self.original_image.file.content_type</expression-string>
+        <expression-string>obj.id</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-80780553/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="2874" column="8" selection-start-line="2874" selection-start-column="8" selection-end-line="2874" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/core/management/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="424" selection-start-line="424" selection-end-line="424" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/forms/fields.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-593">
-          <caret line="602" lean-forward="true" selection-start-line="602" selection-end-line="602" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin/templates/admin/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="50" column="51" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/conf/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/userlinks.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin/views/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1428">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin/options.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="1141" column="52" lean-forward="true" selection-start-line="1141" selection-start-column="52" selection-end-line="1141" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin/templates/admin/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="38" selection-start-line="38" selection-end-line="50" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/os.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="677" selection-start-line="677" selection-end-line="677" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/db/models/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6747">
-          <caret line="388" column="26" lean-forward="true" selection-start-line="388" selection-start-column="26" selection-end-line="388" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/core/files/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/core/files/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/storages/backends/s3boto3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="39" column="27" lean-forward="true" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/PIL/Image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-741">
-          <caret line="2645" lean-forward="true" selection-start-line="2645" selection-end-line="2645" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-80780553/_io.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2337">
-          <caret line="943" column="4" lean-forward="true" selection-start-line="943" selection-start-column="4" selection-end-line="943" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_api/utils/image_resizer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin/templates/admin/app_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/apps/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin/sites.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
@@ -809,53 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gallery_api/throttles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gallery_api/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
-          <folding>
-            <element signature="e#312#321#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gallery_api/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/email_api/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_api/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/rest_framework/viewsets.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -887,59 +809,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/email_api/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/db/models/fields/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="1031" lean-forward="true" selection-start-line="1031" selection-end-line="1031" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_api/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/email_api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gallery_api/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
           <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="e#635#667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/email_api/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -951,13 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/image_api/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/image_api/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -965,17 +833,260 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/email_api/apps.py">
+    <entry file="file://$PROJECT_DIR$/email_api/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="20" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="20" />
+        <state relative-caret-position="21">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/email_api/__init__.py">
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/apps/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2457">
+          <caret line="58" column="19" lean-forward="true" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_api/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/core/mail/backends/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1113">
+          <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/core/mail/backends/dummy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/core/mail/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/core/mail/backends/smtp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="126" column="36" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin/checks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="543" selection-start-line="543" selection-end-line="543" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/forms/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="148" selection-start-line="148" selection-end-line="148" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-80780553/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="906" lean-forward="true" selection-start-line="906" selection-end-line="906" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/smtplib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_api/templates/new_message_email.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_api/templates/new_message_email.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/core/mail/message.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="428" column="11" lean-forward="true" selection-start-line="428" selection-start-column="11" selection-end-line="428" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/os.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="676" column="15" lean-forward="true" selection-start-line="676" selection-start-column="12" selection-end-line="676" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="47" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_api/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image_api/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="27" column="17" lean-forward="true" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/uuid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4493">
+          <caret line="378" lean-forward="true" selection-start-line="378" selection-end-line="378" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="27" selection-start-column="27" selection-end-column="27" />
+          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gallery_api/throttles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gallery_api/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/core/management/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="424" selection-start-line="424" selection-end-line="424" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_api/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-229">
+          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/db/models/fields/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="2302" lean-forward="true" selection-start-line="2302" selection-end-line="2302" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gallery_api/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#312#321#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_api/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-733">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/contrib/admin/options.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="1090" selection-start-line="1090" selection-end-line="1090" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/db/models/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="870" column="8" selection-start-line="870" selection-start-column="8" selection-end-line="870" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gallery_shared/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/galapi/lib/python3.7/site-packages/django/db/models/fields/files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image_api/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1367">
+          <caret line="100" column="6" lean-forward="true" selection-start-line="100" selection-start-column="6" selection-end-line="100" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image_api/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="128" column="53" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

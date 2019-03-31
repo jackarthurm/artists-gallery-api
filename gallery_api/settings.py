@@ -13,30 +13,55 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 import dj_database_url
+from django.core.exceptions import ImproperlyConfigured
+
+
+# Allows running management commands without defining all env vars. Must be
+# set to True in production
+THROW_FOR_MISSING_ENV_VARS: bool = False
+
+
+def get_env_var(key: str):
+
+    try:
+        return os.environ[key]
+    except KeyError:
+
+        if THROW_FOR_MISSING_ENV_VARS:
+            raise ImproperlyConfigured(
+                f'Missing environment variable {key}'
+            )
+
+        return ''
+
+
+def get_env_var_bool(key: str):
+    return get_env_var(key).upper() == 'TRUE'
+
+
+def get_env_var_list(key: str):
+    return get_env_var(key).split()
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (
-    os.environ['DEBUG'].upper() == 'TRUE'
+BASE_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.abspath(__file__)
+    )
 )
 
-ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split()
+
+SECRET_KEY = get_env_var('SECRET_KEY')
+
+DEBUG = get_env_var_bool('DEBUG')
+
+ALLOWED_HOSTS = get_env_var_list('ALLOWED_HOSTS')
 
 
 # CORS
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = os.environ['CORS_ORIGIN_WHITELIST'].split()
+CORS_ORIGIN_WHITELIST = get_env_var_list('CORS_ORIGIN_WHITELIST')
 
 CORS_URLS_REGEX = r'^/api/.*$'
 CORS_ALLOW_METHODS = (
@@ -50,6 +75,7 @@ CORS_ALLOW_HEADERS = (
 CORS_EXPOSE_HEADERS = (
     'Access-Control-Allow-Origin: *',
 )
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -99,7 +125,6 @@ WSGI_APPLICATION = 'gallery_api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600)
 }
@@ -107,7 +132,6 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilari'
@@ -162,22 +186,32 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = DEFAULT_FILE_STORAGE
 
 AWS_DEFAULT_ACL = 'public-read'
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+AWS_ACCESS_KEY_ID = get_env_var('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = get_env_var('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = get_env_var('AWS_STORAGE_BUCKET_NAME')
 AWS_AUTO_CREATE_BUCKET = False
 AWS_QUERYSTRING_AUTH = False
 AWS_QUERYSTRING_EXPIRE = None
 AWS_S3_ENCRYPTION = False
 AWS_S3_FILE_OVERWRITE = True
-AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
-AWS_S3_USE_SSL = (
-    os.environ['AWS_S3_USE_SSL'].upper() == 'TRUE'
-)
+AWS_S3_REGION_NAME = get_env_var('AWS_S3_REGION_NAME')
+AWS_S3_USE_SSL = get_env_var_bool('AWS_S3_USE_SSL')
 
 
 # Admin site
 DJANGO_ADMIN_SITE_HEADER = 'katealicemann.com admin'
 DJANGO_ADMIN_SITE_TITLE = 'katealicemann.com admin portal'
 DJANGO_ADMIN_SITE_INDEX_TITLE = 'katealicemann.com admin portal'
-DJANGO_ADMIN_SITE_LINK_URL = os.environ['FRONTEND_URL']
+DJANGO_ADMIN_SITE_LINK_URL = get_env_var('FRONTEND_URL')
+
+
+# Email config
+CONTACT_EMAILS = get_env_var_list('CONTACT_EMAILS')
+DEFAULT_FROM_EMAIL = get_env_var('DEFAULT_FROM_EMAIL')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = get_env_var_bool('EMAIL_USE_TLS')
+EMAIL_HOST = get_env_var('EMAIL_HOST')
+EMAIL_PORT = get_env_var('EMAIL_PORT')
+EMAIL_HOST_USER = get_env_var('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = get_env_var('EMAIL_HOST_PASSWORD')
