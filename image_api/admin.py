@@ -10,7 +10,6 @@ from django.forms.fields import ImageField
 
 from image_api.models import (
     GalleryItem,
-    ImageFile,
     ItemTag,
 )
 
@@ -103,7 +102,7 @@ class GalleryItemAdmin(ModelAdmin):
         with transaction.atomic():
 
             image_file: TemporaryUploadedFile = form.cleaned_data['image_file']
-            instance.set_image(image_file)
+            instance.save_image(image_file)
 
             super(GalleryItemAdmin, self).save_model(
                 request,

@@ -11,11 +11,17 @@ from image_api.serializers import (
 
 
 class ItemTagViewSet(ReadOnlyModelViewSet):
+
     queryset = ItemTag.objects.all()
     serializer_class = ItemTagSerializer
 
 
 class GalleryViewSet(ReadOnlyModelViewSet):
+
+    class Meta:
+        fields = (
+            'name',
+        )
 
     queryset = GalleryItem.objects.all()
     serializer_class = GalleryItemSerializer
