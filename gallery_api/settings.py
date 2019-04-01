@@ -18,7 +18,7 @@ from django.core.exceptions import ImproperlyConfigured
 
 # Allows running management commands without defining all env vars. Must be
 # set to True in production
-THROW_FOR_MISSING_ENV_VARS: bool = False
+THROW_FOR_MISSING_ENV_VARS: bool = True
 
 
 def get_env_var(key: str):
@@ -199,9 +199,10 @@ AWS_S3_USE_SSL = get_env_var_bool('AWS_S3_USE_SSL')
 
 
 # Admin site
-DJANGO_ADMIN_SITE_HEADER = 'katealicemann.com admin'
-DJANGO_ADMIN_SITE_TITLE = 'katealicemann.com admin portal'
-DJANGO_ADMIN_SITE_INDEX_TITLE = 'katealicemann.com admin portal'
+SITE_NAME = get_env_var('SITE_NAME')
+DJANGO_ADMIN_SITE_HEADER = f'{SITE_NAME} admin'
+DJANGO_ADMIN_SITE_TITLE = f'{SITE_NAME} admin portal'
+DJANGO_ADMIN_SITE_INDEX_TITLE = f'{SITE_NAME} admin portal'
 DJANGO_ADMIN_SITE_LINK_URL = get_env_var('FRONTEND_URL')
 
 
@@ -215,3 +216,4 @@ EMAIL_HOST = get_env_var('EMAIL_HOST')
 EMAIL_PORT = get_env_var('EMAIL_PORT')
 EMAIL_HOST_USER = get_env_var('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = get_env_var('EMAIL_HOST_PASSWORD')
+EMAIL_SUBJECT = f'New contact at {SITE_NAME}'

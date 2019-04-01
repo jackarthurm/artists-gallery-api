@@ -1,3 +1,62 @@
-I am an HTML email!
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto"
+          rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        font-size: large;
+      }
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin: 30px 0 30px 0;
+      }
+      th, td {
+        padding: 10px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Dear {{ site_name }} administrator,</p>
 
-<h1>YOU INPUT {{ email }} TEST</h1>
+    <p>You have a new message!</p>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <td>{{ name }}</td>
+      </tr>
+      <tr>
+        <th>
+          Email
+        </th>
+        <td>
+          <a href="mailto:{{ email }}?subject={{ subject }}">
+            {{ email }}
+          </a>
+        </td>
+      <tr>
+        <th>Subject</th>
+        <td>{{ subject }}</td>
+      </tr>
+      <tr>
+        <th>Message</th>
+        <td>{{ body }}</td>
+      </tr>
+    </table>
+
+    <p>View and delete this message data
+      <a href="{{ object_url }}">
+        here
+      </a>
+    </p>
+    <p>To manage {{ site_name }} go to the admin site
+      <a href="{{ index_url }}">
+        here
+      </a>
+    </p>
+  </body>
+</html>

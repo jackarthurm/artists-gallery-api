@@ -1,8 +1,10 @@
+from logging import getLogger, Logger
 from uuid import (
     UUID,
     uuid4,
 )
 
+from boto3.exceptions import Boto3Error
 from django.core.files import File
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db import transaction
@@ -22,6 +24,9 @@ from django.db.models.fields.files import ImageFieldFile
 
 from gallery_shared.models import UUIDModel
 from image_api.utils.image_resizer import ImageResizer
+
+
+log: Logger = getLogger(__name__)
 
 
 IMAGE_FOLDER_NAME: str = 'gallery_images'
@@ -54,6 +59,17 @@ class ImageFile(UUIDModel):
         width_field='width',
         upload_to=upload_to_uuid
     )
+
+    def delete(self, *args, **kwargs):
+
+        try:
+            self.file.delete(save=False)
+        except Boto3Error as e:
+            log.warning(
+                f'Failed to delete image file: {e}'
+            )
+
+        super(ImageFile, self).delete(*args, **kwargs)
 
 
 class ItemTag(Model):
