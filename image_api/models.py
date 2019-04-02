@@ -1,4 +1,8 @@
-from logging import getLogger, Logger
+from logging import (
+    getLogger,
+    Logger,
+)
+from typing import Tuple
 from uuid import (
     UUID,
     uuid4,
@@ -30,7 +34,9 @@ log: Logger = getLogger(__name__)
 
 
 IMAGE_FOLDER_NAME: str = 'gallery_images'
-REDUCED_IMAGE_COMPRESSION_QUALITY = 85
+REDUCED_IMAGE_COMPRESSION_QUALITY: int = 85
+REDUCED_IMAGE_CONTENT_TYPE: str = 'image/jpeg'
+REDUCED_IMAGE_FORMAT: str = 'JPEG'
 
 
 class ReducedImageSizePx(object):
@@ -97,6 +103,11 @@ class GalleryItem(UUIDModel):
             'title',
         )
 
+    REDUCED_IMAGE_FIELDS: Tuple[Tuple[str, int]] = (
+        ('thumbnail_image', ReducedImageSizePx.THUMBNAIL),
+        ('large_image', ReducedImageSizePx.LARGE),
+    )
+
     objects: Manager = Manager()
 
     original_image: ImageFile = OneToOneField(
@@ -144,6 +155,7 @@ class GalleryItem(UUIDModel):
         try:
             img: ImageFile = getattr(self, image_field)
         except ImageFile.DoesNotExist:
+            # We need to generate the ID because it will become the image name
             img: ImageFile = ImageFile(id=uuid4())
 
         # Saving the file field saves the related model too
@@ -160,27 +172,22 @@ class GalleryItem(UUIDModel):
         # not nullable so we can assume it exists
         with ImageResizer(self.original_image.file.file) as resizer:
 
-            file = SimpleUploadedFile(None, None, 'image/jpeg')
+            for img_field_name, new_size in self.REDUCED_IMAGE_FIELDS:
 
-            resizer.shrink_image_to_box_size(
-                new_size=ReducedImageSizePx.THUMBNAIL,
-                fout=file.file,
-                compression_quality=REDUCED_IMAGE_COMPRESSION_QUALITY,
-                save_format='JPEG',
-            )
+                file: SimpleUploadedFile = SimpleUploadedFile(
+                    name=None,
+                    content=None,
+                    content_type=REDUCED_IMAGE_CONTENT_TYPE
+                )
 
-            self._save_image_field('thumbnail_image', file)
+                resizer.shrink_image_to_box_size(
+                    new_size=new_size,
+                    fout=file.file,
+                    compression_quality=REDUCED_IMAGE_COMPRESSION_QUALITY,
+                    save_format=REDUCED_IMAGE_FORMAT,
+                )
 
-            file = SimpleUploadedFile(None, None, 'image/jpeg')
-
-            resizer.shrink_image_to_box_size(
-                new_size=ReducedImageSizePx.LARGE,
-                fout=file.file,
-                compression_quality=REDUCED_IMAGE_COMPRESSION_QUALITY,
-                save_format='JPEG',
-            )
-
-            self._save_image_field('large_image', file)
+                self._save_image_field(img_field_name, file)
 
     def __str__(self) -> str:
         return f'Gallery item for "{self.title}"'
