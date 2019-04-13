@@ -1,9 +1,9 @@
-from rest_framework.serializers import HyperlinkedModelSerializer
+from rest_framework.serializers import ModelSerializer
 
 from email_api.models import ContactEnquiry
 
 
-class ContactEnquirySerializer(HyperlinkedModelSerializer):
+class ContactEnquirySerializer(ModelSerializer):
 
     class Meta:
         model = ContactEnquiry

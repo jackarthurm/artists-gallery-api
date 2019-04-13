@@ -9,6 +9,7 @@ from uuid import (
 )
 
 from boto3.exceptions import Boto3Error
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.files import File
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db import transaction
@@ -56,7 +57,8 @@ def upload_to_uuid(instance: 'ImageFile', _filename: str):
 
 class ImageFile(UUIDModel):
 
-    objects: Manager = Manager()
+    objects: Manager
+    DoesNotExist: ObjectDoesNotExist
 
     width: int = IntegerField(editable=False)
     height: int = IntegerField(editable=False)
@@ -86,7 +88,7 @@ class ItemTag(Model):
             'name',
         )
 
-    objects: Manager = Manager()
+    objects: Manager
 
     name: str = CharField(primary_key=True, max_length=32)
 
@@ -103,12 +105,12 @@ class GalleryItem(UUIDModel):
             'title',
         )
 
+    objects: Manager
+
     REDUCED_IMAGE_FIELDS: Tuple[Tuple[str, int]] = (
         ('thumbnail_image', ReducedImageSizePx.THUMBNAIL),
         ('large_image', ReducedImageSizePx.LARGE),
     )
-
-    objects: Manager = Manager()
 
     original_image: ImageFile = OneToOneField(
         to=ImageFile,

@@ -17,11 +17,11 @@ from gallery_shared.models import UUIDModel
 
 class ContactEnquiry(UUIDModel):
 
+    objects: Manager
+
     class Meta:
         verbose_name = 'contact enquiry'
         verbose_name_plural = 'contact enquiries'
-
-    objects = Manager()
 
     name: str = CharField(
         max_length=70,
@@ -38,7 +38,7 @@ class ContactEnquiry(UUIDModel):
     )
     body: str = CharField(
         blank=True,
-        max_length=10000,
+        max_length=2000,
         verbose_name='Message text'
     )
     email_error: str = TextField(

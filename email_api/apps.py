@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class EmailApiConfig(AppConfig):
+class EmailAPIConfig(AppConfig):
     name = 'email_api'
-    verbose_name = 'messages'
+    verbose_name = 'Messages'

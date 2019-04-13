@@ -1,1 +1,1 @@
-default_app_config = 'email_api.apps.EmailApiConfig'
+default_app_config = 'email_api.apps.EmailAPIConfig'
