@@ -3,7 +3,10 @@ from django.contrib.admin import (
     ModelAdmin,
 )
 
-from email_api.models import ContactEnquiry
+from email_api.models import (
+    ContactEnquiry,
+    ContactRecipient,
+)
 
 
 class ContactEnquiryAdmin(ModelAdmin):
@@ -60,3 +63,4 @@ class ContactEnquiryAdmin(ModelAdmin):
 
 
 site.register(ContactEnquiry, ContactEnquiryAdmin)
+site.register(ContactRecipient)

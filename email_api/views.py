@@ -9,7 +9,10 @@ from rest_framework.request import Request
 from rest_framework.reverse import reverse
 from rest_framework.viewsets import GenericViewSet
 
-from email_api.models import ContactEnquiry
+from email_api.models import (
+    ContactEnquiry,
+    ContactRecipient,
+)
 from email_api.serializers import ContactEnquirySerializer
 
 
@@ -73,7 +76,7 @@ def make_new_contact_email(
         subject=settings.EMAIL_SUBJECT,
         body=plaintext_content,
         from_email=settings.DEFAULT_FROM_EMAIL,
-        to=settings.CONTACT_EMAILS,
+        bcc=ContactRecipient.objects.emails(),
         alternatives=[
             (html_content, 'text/html')
         ]

@@ -2,7 +2,10 @@ from smtplib import (
     SMTPException,
     SMTPResponseException,
 )
-from typing import Optional
+from typing import (
+    Optional,
+    List,
+)
 
 from django.db.models import (
     EmailField,
@@ -10,6 +13,8 @@ from django.db.models import (
     CharField,
     TextField,
     DateTimeField,
+    Model,
+    BooleanField,
 )
 
 from gallery_shared.models import UUIDModel
@@ -74,3 +79,30 @@ class ContactEnquiry(UUIDModel):
     def __str__(self) -> str:
 
         return self.subject
+
+
+class ContactRecipientManager(Manager):
+
+    def emails(self) -> List[str]:
+
+        return list(
+            self.all().filter(send_email=True).values_list(
+                'email',
+                flat=True
+            )
+        )
+
+
+class ContactRecipient(Model):
+
+    class Meta:
+        verbose_name = 'contact recipient'
+
+    objects = ContactRecipientManager()
+
+    email = EmailField()
+    name = CharField(null=True, blank=True, max_length=78)
+    send_email = BooleanField(default=True)
+
+    def __str__(self):
+        return self.name or self.email

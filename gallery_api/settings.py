@@ -209,7 +209,6 @@ DJANGO_ADMIN_SITE_LINK_URL = get_env_var('FRONTEND_URL')
 
 
 # Email config
-CONTACT_EMAILS = get_env_var_list('CONTACT_EMAILS')
 DEFAULT_FROM_EMAIL = get_env_var('DEFAULT_FROM_EMAIL')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
