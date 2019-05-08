@@ -135,8 +135,8 @@ class GalleryItem(UUIDModel):
     title: str = TextField()
     created_date = DateField(null=True, blank=True)
     description: str = TextField(blank=True)
-    media_description: str = TextField(blank=True)
-    size_description: str = TextField(blank=True)
+    media_description: str = TextField(blank=True, help_text='e.g. "Oil on Canvas"')
+    size_description: str = TextField(blank=True, help_text='e.g. \"8" x 12"\"')
     artist_name: str = TextField()
 
     tags = ManyToManyField(to=ItemTag, blank=True)
