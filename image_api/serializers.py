@@ -48,6 +48,7 @@ class GalleryItemSerializer(HyperlinkedModelSerializer):
             'created_date',
             'description',
             'media_description',
+            'size_description',
             'artist_name',
             'tags',
         )

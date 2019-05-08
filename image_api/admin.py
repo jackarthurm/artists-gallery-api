@@ -21,6 +21,7 @@ GALLERY_ITEM_EDITABLE_FIELDS = (
     'created_date',
     'description',
     'media_description',
+    'size_description',
     'tags',
 )
 
