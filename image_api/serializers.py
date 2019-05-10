@@ -41,7 +41,6 @@ class GalleryItemSerializer(HyperlinkedModelSerializer):
         fields = (
             'id',
             'url',
-            'original_image',
             'large_image',
             'thumbnail_image',
             'title',
@@ -60,7 +59,6 @@ class GalleryItemSerializer(HyperlinkedModelSerializer):
             'thumbnail_image',
         )
 
-    original_image = ImageFileSerializer()
     large_image = ImageFileSerializer()
     thumbnail_image = ImageFileSerializer()
 
