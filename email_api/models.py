@@ -57,8 +57,7 @@ class ContactEnquiry(UUIDModel):
     @property
     def email_sent_ok(self) -> Optional[bool]:
 
-        if self.pk:
-            return self.email_error is None
+        return self.pk and self.email_error is None
 
     def set_email_error(self, e: SMTPException):
 
@@ -102,7 +101,10 @@ class ContactRecipient(Model):
 
     email = EmailField()
     name = CharField(null=True, blank=True, max_length=78)
-    send_email = BooleanField(default=True)
+    send_email = BooleanField(
+        default=True,
+        help_text='Whether or not to send emails to this contact recipient'
+    )
 
     def __str__(self):
         return self.name or self.email
