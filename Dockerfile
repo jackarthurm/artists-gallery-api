@@ -31,4 +31,4 @@ ADD . /app
 
 EXPOSE 8000
 
-ENTRYPOINT ["/usr/local/bin/gunicorn", "--config", "/app/gunicorn.conf", "-b", ":8000", "gallery_api.wsgi:application"]
+ENTRYPOINT ["/usr/local/bin/gunicorn", "--config", "/app/gunicorn.conf", "-b", "127.0.0.1:8000", "gallery_api.wsgi"]
