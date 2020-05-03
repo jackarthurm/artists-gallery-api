@@ -31,4 +31,4 @@ ADD . /app
 
 EXPOSE 8000
 
-ENTRYPOINT /usr/local/bin/gunicorn gallery_api.wsgi:application --bind 0.0.0.0:8000 --config gunicorn.conf
+ENTRYPOINT /usr/local/bin/gunicorn artists-gallery-api.gallery_api.wsgi:application --bind 0.0.0.0:8000 --config gunicorn.conf
