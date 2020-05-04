@@ -2,6 +2,7 @@ FROM python:3.7.2-alpine3.9
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV DEBUG 0
 
 RUN mkdir /app
 WORKDIR /app
@@ -31,4 +32,4 @@ ADD . /app
 
 EXPOSE 8000
 
-ENTRYPOINT /usr/local/bin/gunicorn artists-gallery-api.gallery_api.wsgi:application --bind 0.0.0.0:8000 --config gunicorn.conf
+ENTRYPOINT ["/usr/local/bin/gunicorn", "--bind", ":8000", "--config", "gunicorn.conf", "gallery_api.wsgi:application"]
