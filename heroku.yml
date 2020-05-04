@@ -2,5 +2,5 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: gunicorn gallery_api.wsgi:application --bind :8000
-
+  web:
+    command: /usr/local/bin/gunicorn --bind :8000 --config gunicorn.conf gallery_api.wsgi:application
