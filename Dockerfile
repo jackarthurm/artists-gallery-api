@@ -33,4 +33,4 @@ COPY . .
 RUN adduser -D myuser
 USER myuser
 
-CMD python serve.py
+CMD python3 serve.py
