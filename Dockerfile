@@ -28,8 +28,9 @@ RUN apk add --no-cache \
 RUN python3 -m pip install -r requirements.txt --no-cache-dir
 RUN apk --purge del .build-deps
 
-ADD . /app
+COPY . .
 
-EXPOSE 8000
+RUN adduser -D myuser
+USER myuser
 
-ENTRYPOINT ["/usr/local/bin/gunicorn", "--bind", ":8000", "--config", "gunicorn.conf", "gallery_api.wsgi:application"]
+CMD gunicorn gallery_api.wsgi:application --bind 0.0.0.0:8000
