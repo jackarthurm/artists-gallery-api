@@ -6,7 +6,7 @@ ENV DEBUG 0
 
 RUN mkdir /app
 WORKDIR /app
-ADD requirements.txt /app/
+COPY ./requirements.txt .
 
 RUN apk add --no-cache postgresql-libs
 RUN apk add --no-cache --virtual .build-deps \
