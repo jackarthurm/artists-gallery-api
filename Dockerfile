@@ -33,4 +33,4 @@ COPY . .
 RUN adduser -D myuser
 USER myuser
 
-CMD gunicorn gallery_api.wsgi:application --bind 0.0.0.0:8000 --config gunicorn.conf.py
+CMD python waitress.py
