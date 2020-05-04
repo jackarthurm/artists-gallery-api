@@ -3,4 +3,5 @@ build:
     web: Dockerfile
 run:
   web:
-    command: /usr/local/bin/gunicorn --bind :8000 --config gunicorn.conf gallery_api.wsgi:application
+    command: 
+      - /usr/local/bin/gunicorn --bind :8000 --config gunicorn.conf gallery_api.wsgi:application
