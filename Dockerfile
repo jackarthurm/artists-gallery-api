@@ -33,4 +33,4 @@ COPY . .
 RUN adduser -D myuser
 USER myuser
 
-CMD python3 serve.py
+CMD waitress-serve --port=$PORT gallery_api.wsgi:application
